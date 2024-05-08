@@ -1,26 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <NavbarComponent />
+    <HeaderComponet />
+    <ColorPickerComponent />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavbarComponent from './components/navbar/NavbarComponent.vue';
+import HeaderComponet from './components/header/HeaderComponent.vue';
+import ColorPickerComponent from './components/Form/ColorPickerComponent.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    NavbarComponent,
+    HeaderComponet,
+    ColorPickerComponent
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
