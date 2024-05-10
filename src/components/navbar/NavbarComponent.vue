@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <nav class="navbar navbar-expand-lg bg-light shadow-lg p-4 border-bottom">
+  <div class="thedarkmode">
+    <nav class="navbar navbar-expand-lg bg-light shadow-lg p-4">
         <div class="container">
             <a class="navbar-brand" href="/" style="display: flex; align-items: center;">
                 <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10,7 +10,7 @@
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -19,17 +19,60 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="form-check form-switch ms-auto">
+                <ThemeButtonComponent />
+            </div>
         </div>
     </nav>
   </div>
 </template>
 
 <script>
+import ThemeButtonComponent from '../darkmode/ThemeButtonComponent.vue';
+
 export default {
-    name: 'NavbarComponent'
+    name: 'NavbarComponent',
+    components: {
+        ThemeButtonComponent,
+    }
 }
 </script>
 
 <style scoped>
+    :root {
+        --background-color-primary: #ebebeb;
+        --background-color-secondary: #fafafa;
+        --accent-color: #cacaca;
+        --text-primary-color: #222;
+        --element-size: 4rem;
+    }
 
+    :root.dark-theme {
+        --background-color-primary: #1e1e1e;
+        --background-color-secondary: #2d2d30;
+        --accent-color: #3f3f3f;
+        --text-primary-color: #ddd;
+        --border-color-primary: #52535b;
+    }
+
+    p {
+        color: var(--text-primary-color);
+    }
+
+    .bg-light {
+        background-color: var(--background-color-secondary) !important;
+    }
+
+    .navbar-brand {
+        color: var(--text-primary-color) !important;
+    }
+
+    .nav-link {
+        color: var(--text-primary-color) !important;
+    }
+
+    .navbar-toggler-icon {
+        color: var(--text-primary-color) !important;
+    }
 </style>

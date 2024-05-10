@@ -5,7 +5,7 @@
           <div class="col-md-6 col-sm-12 col-lg-6 col-xl-6 col-xxl-6 mx-auto mt-4">
             <div>
               <div class="d-flex align-items-center">
-                <span class="hexadeciamal">HEX</span>
+                <span class="hexadecimal fw-bold">HEX</span>
                 <input
                   v-model="hexColor"
                   @input="updateColor"
@@ -13,10 +13,14 @@
                   class="form-control"
                   placeholder="Ingrese un color hexadecimal"
                 />
-                <div
-                  :style="{ backgroundColor: hexColor }"
-                  class="color-circle"
-                ></div>
+                <div class="color-circle-wrapper">
+                  <input type="color"
+                    :style="{ backgroundColor: hexColor, }"
+                    class="color-circle shadow-lg rounded-full"
+                    v-model="hexColor"
+                    @input="updateColor"
+                  />
+                </div>
               </div>
               <span class="text-danger" v-show="showErrorMessage">Ingrese un color hexadecimal válido</span>
             </div>
@@ -52,6 +56,8 @@
     data() {
       return {
         hexColor: '',
+        showColorPicker: false,
+        isDarkMode: false
       };
     },
   
@@ -81,6 +87,31 @@
       updateColor() {
   
       },
+
+      openColorPicker() { 
+        this.showColorPicker = true;
+      },
+
+      toggleColorPicker() {
+        this.showColorPicker = !this.showColorPicker;
+      },
+
+      onColorChange(color) {
+        if (color && color) {
+          this.hexColor = color.hex;
+          this.showColorPicker = false;
+        }
+      },
+
+      doCopy: function () {
+        this.$copyText(this.message).then(function (e) {
+          alert('Copied')
+          console.log(e)
+        }, function (e) {
+          alert('Can not copy')
+          console.log(e)
+        })
+      },
   
       copyHex(hex) {
         navigator.clipboard.writeText(hex).then(() => {
@@ -107,13 +138,26 @@
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         text-align: center;
         padding-top: 15px;
+        padding: 10px;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     }
 
     .color-circle {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        margin-left: 5px;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+        color: black;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        border: none;
+        padding: 0;
+    }
+
+    .color-circle-wrapper {
+      margin-left: 5px;
+      width: 45px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
     }
 
     .form-control {
@@ -126,10 +170,33 @@
         box-shadow: none;
     }
 
+    .color-circle-dark-mode {
+      background-color: white;
+      color: black;
+    }
+
     .hexadecimal-color {
-        color: #fff5f5;
+        color: white;
+        font-weight: bold;
+        opacity: 0.8;
     }
     .hexadecimal-weight {
-        color: #fff5f5;
+        color: white;
+        font-weight: bold;
+        opacity: 0.8;
+    }
+
+    :root.dark-theme {
+      --background-color-primary: #1e1e1e;
+      --background-color-secondary: #2d2d30;
+      --accent-color: #3f3f3f;
+      --text-primary-color: #ddd;
+      --background-form-control-primary: #ddd;
+      --text-hexa-dark-mode-primary: white;
+    }
+
+    .hexadecimal {
+      color: var(--text-primary-color);
+      margin-right: 10px;
     }
 </style>
