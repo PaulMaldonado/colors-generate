@@ -26,6 +26,9 @@ export default {
   body {
     padding: 0;
     margin: 0;
+    height: 100%;
+    background-color: var(--background-color-primary);
+    color: var(--text-primary-color);
   }
 
   :root {

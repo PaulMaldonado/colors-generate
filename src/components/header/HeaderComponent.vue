@@ -1,7 +1,7 @@
 <template>
   <div class="mt-4">
     <h1 class="text-center fw-bold mt-4 title-header">CSS COLORS <br>GENERATOR</h1>
-    <p class="text-center mt-4 subtitle-header">Presione el input, ingrese un código Hexadecimal <br>para generar su paleta de colores.</p>
+    <p class="text-center mt-4 subtitle-header">Press input, enter a Hexadecimal code <br>to generate color palette.</p>
   </div>
 </template>
 

@@ -6,13 +6,9 @@
         type="checkbox"
         class="switch-checkbox"
       />
-      <label for="checkbox" class="switch-label">
-        <span>🌙</span>
-        <span>☀️</span>
-        <div
-          class="switch-toggle"
-          :class="{ 'switch-toggle-checked': userTheme === 'dark-theme' }"
-        ></div>
+      <label for="theme-toggle" class="switch-label" @click="toggleTheme">
+        <span v-if="userTheme === 'dark-theme'">🌙</span>
+        <span v-else>☀️</span>
       </label>
     </div>
   </template>
